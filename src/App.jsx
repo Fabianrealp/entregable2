@@ -7,17 +7,17 @@ import { imagesWeather } from "./util/WeatherPictures";
 import WeatherOfImput from "./components/WeatherOfImput";
 
 function App() {
-  const [country, setCountry] = useState(null);
+  const [cityClimateInfo, setCityClimateInfo] = useState(null);
   const hanledSumit = (event) => {
     event.preventDefault();
 
     const API_KEY = "e4912d9ce2773cb304639766fa75b4c7";
-    const countryName = event.target.countryName.value;
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${countryName}&appid=${API_KEY}`;
+    const cityName = event.target.cityName.value;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`;
 
     axios
       .get(url)
-      .then(({ data }) => setCountry(data))
+      .then(({ data }) => setCityClimateInfo(data))
       .catch((err) => console.log(err));
   };
 
@@ -40,22 +40,40 @@ function App() {
   return (
     <>
       <div className="bg-black ">
+        {
+          cityClimateInfo ?
         <main
-          className={` min-h-screen font-lato text-white flex justify-center items-center flex-col gap-8 max-w-screen-xl bg-cover  mx-auto px-2 bg-center  ${
+         className={` min-h-screen font-lato text-white flex justify-center items-center flex-col gap-8 max-w-screen-xl bg-cover  mx-auto px-2 bg-center  ${
+            imagesWeather[cityClimateInfo?.weather[0].icon]
+          }`}
+        >
+          <form className="flex rounded-md overflow-hidden max-w-max mx-auto" onSubmit={hanledSumit} action="">
+            <input placeholder="Example:Medellin" className="text-black" id="cityName" type="text" />
+            <button className=" bg-black/70">Change of City</button>
+          </form>
+          
+            
+             <WeatherOfImput cityClimateInfo={cityClimateInfo} />
+             
+          
+         
+        </main> : <main
+         className={` min-h-screen font-lato text-white flex justify-center items-center flex-col gap-8 max-w-screen-xl bg-cover  mx-auto px-2 bg-center  ${
             imagesWeather[weatherInfo?.weather[0].icon]
           }`}
         >
           <form className="flex rounded-md overflow-hidden max-w-max mx-auto" onSubmit={hanledSumit} action="">
-            <input placeholder="Example:Medellin" className="text-black" id="countryName" type="text" />
+            <input placeholder="Example:Medellin" className="text-black" id="cityName" type="text" />
             <button className=" bg-black/70">Change of City</button>
           </form>
-          {
-            country ?
-             <WeatherOfImput country={country} />
-             : <Weather weatherInfo={weatherInfo}/> 
-          }
+          
+            
+        
+              <Weather weatherInfo={weatherInfo}/> 
+          
          
         </main>
+}
       </div>
     </>
   );
