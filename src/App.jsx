@@ -47,7 +47,7 @@ function App() {
         >
           <form className="flex rounded-md overflow-hidden max-w-max mx-auto" onSubmit={hanledSumit} action="">
             <input placeholder="Example:Medellin" className="text-black" id="countryName" type="text" />
-            <button className=" bg-black/70">cambiar ciudad</button>
+            <button className=" bg-black/70">Change of City</button>
           </form>
           {
             country ?

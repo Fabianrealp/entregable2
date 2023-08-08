@@ -110,7 +110,7 @@ const WeatherOfImput = ({country}) => {
         onClick={hanledChangeCelsiusToFahrenheit}
         className="mt-4 bg-black/70 p-2 rounded-full hover:scale-125 hover:bg-black/80"
       >
-        {isCelsius?<p>Cambiar °F</p>:<p>Cambiar °C</p>}
+        {isCelsius?<p>Change °F</p>:<p>Change °C</p>}
       </button>
     </section>
     </div>
