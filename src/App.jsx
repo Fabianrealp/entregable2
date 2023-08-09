@@ -44,7 +44,7 @@ function App() {
           cityClimateInfo ?
         <main
          className={` min-h-screen font-lato text-white flex justify-center items-center flex-col gap-8 max-w-screen-xl bg-cover  mx-auto px-2 bg-center  ${
-            imagesWeather[cityClimateInfo?.weather[0].icon]
+            imagesWeather[cityClimateInfo.weather[0].icon]
           }`}
         >
           <form className="flex rounded-md overflow-hidden max-w-max mx-auto" onSubmit={hanledSumit} action="">

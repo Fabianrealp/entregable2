@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const WeatherOfImput = ({cityClimateInfo}) => {
    const [isCelsius, setIsCelsius] = useState(true);
-    const degreesCelsius =  Math.trunc (cityClimateInfo?.main.temp - 273.15) 
+    const degreesCelsius =  Math.trunc (cityClimateInfo.main.temp - 273.15) 
     const degreesFahrenheit = Math.trunc(degreesCelsius * 1.8 + 32)
     const hanledChangeCelsiusToFahrenheit = () => {
       setIsCelsius(!isCelsius);
@@ -10,17 +10,17 @@ const WeatherOfImput = ({cityClimateInfo}) => {
   return (
     <div>
          <section className="text-center">
-      <h2 className="text-2xl">{cityClimateInfo?.name}</h2>
+      <h2 className="text-2xl">{cityClimateInfo.name}</h2>
       <section className="grid gap-4 sm:grid-cols-[auto_auto] mt-7 ">
         {/* bloque superior */}
         <section className="bg-white/20 p-2 rounded-2xl grid grid-cols-2 items-center">
-          <h4 className="col-span-2 text-xl" >{cityClimateInfo?.weather[0].description}</h4>
+          <h4 className="col-span-2 text-xl" >{cityClimateInfo.weather[0].description}</h4>
           <span className="text-[5rem] ">
             {isCelsius ? degreesCelsius + " °" : degreesFahrenheit + " °"}
           </span>
           <div>
             <img
-              src={`https://openweathermap.org/img/wn/${cityClimateInfo?.weather[0].icon}@4x.png`}
+              src={`https://openweathermap.org/img/wn/${cityClimateInfo.weather[0].icon}@4x.png`}
               alt=""
             />
           </div>
@@ -42,7 +42,7 @@ const WeatherOfImput = ({cityClimateInfo}) => {
                 />
               </svg>
             </div>
-            <span><b>{cityClimateInfo?.wind.speed}m/s</b></span>
+            <span><b>{cityClimateInfo.wind.speed}m/s</b></span>
           </article>
 
           <article className="flex gap-2 py-4 items-center">
@@ -60,7 +60,7 @@ const WeatherOfImput = ({cityClimateInfo}) => {
                 />
               </svg>
             </div>
-            <span><b>{cityClimateInfo?.main.humidity}%</b></span>
+            <span><b>{cityClimateInfo.main.humidity}%</b></span>
           </article>
 
           <article className="flex gap-2 py-4 items-center">
@@ -102,7 +102,7 @@ const WeatherOfImput = ({cityClimateInfo}) => {
                 />
               </svg>
             </div>
-            <span><b>{cityClimateInfo?.main.pressure} hPa</b></span>
+            <span><b>{cityClimateInfo.main.pressure} hPa</b></span>
           </article>
         </section>
       </section>
